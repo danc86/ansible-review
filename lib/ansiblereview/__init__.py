@@ -1,4 +1,4 @@
-from ansiblelint import default_rulesdir, RulesCollection
+from ansiblelint import RulesCollection
 import codecs
 from functools import partial
 import re
@@ -9,6 +9,9 @@ try:
     from ansible.plugins import module_loader
 except ImportError:
     from ansible.utils import module_finder as module_loader
+
+import pkg_resources
+default_rulesdir = pkg_resources.resource_filename('ansiblelint', 'rules')
 
 
 class AnsibleReviewFormatter(object):
